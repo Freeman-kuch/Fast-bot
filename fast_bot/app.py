@@ -5,9 +5,6 @@ import sys
 import traceback
 from datetime import datetime
 from starlette import status
-
-# from aiohttp import web
-# from aiohttp.web import Request, Response, json_response
 from fastapi import FastAPI, Request, Response
 from fastapi.responses import JSONResponse
 from botbuilder.core import (
@@ -26,10 +23,7 @@ from bots import DialogBot
 
 CONFIG = DefaultConfig()
 
-APP = FastAPI(
-    # debug=True,
-    # middleware=[aiohttp_error_middleware],
-)
+APP = FastAPI()
 
 
 # Create adapter.
@@ -98,18 +92,3 @@ async def messages(req: Request) -> Response:
     if response:
         return JSONResponse(data=response.body, status_code=response.status)
     return Response(status_code=status.HTTP_200_OK)
-
-
-@APP.get("/")
-async def read_root():
-    return {"message": "Hello, World!"}
-
-
-# APP = web.Application(middlewares=[aiohttp_error_middleware])
-# APP.router.add_post("/api/messages", messages)
-
-# if __name__ == "__main__":
-#     try:
-#         web.run_app(APP, host="localhost", port=CONFIG.PORT)
-#     except Exception as error:
-#         raise error
