@@ -25,17 +25,17 @@ CONFIG = DefaultConfig()
 
 APP = FastAPI()
 
-
 # Create adapter.
 # See https://aka.ms/about-bot-adapter to learn more about how bots work.
 ADAPTER = CloudAdapter(ConfigurationBotFrameworkAuthentication(CONFIG))
+
 
 # Catch-all for errors.
 async def on_error(context: TurnContext, error: Exception):
     # This check writes out errors to console log
     # NOTE: In production environment, you should consider logging this to Azure
     #       application insights.
-    print(f"\n [on_turn_error]: { error }", file=sys.stderr)
+    print(f"\n [on_turn_error]: {error}", file=sys.stderr)
     traceback.print_exc()
 
     # Send a message to the user
@@ -68,12 +68,14 @@ ADAPTER.on_turn_error = on_error
 
 # Create MemoryStorage, UserState and ConversationState
 MEMORY = MemoryStorage()
-CONVERSATION_STATE = ConversationState(MEMORY)  # we can use redis for this, just cofigure this and pass it to teh dialogue
+CONVERSATION_STATE = ConversationState(
+    MEMORY)  # we can use redis for this, just cofigure this and pass it to teh dialogue
 USER_STATE = UserState(MEMORY)
 
 # create main dialog and bot
 DIALOG = UserProfileDialog(USER_STATE)
 BOT = DialogBot(CONVERSATION_STATE, USER_STATE, DIALOG)
+
 
 # Listen for incoming requests on /api/messages.
 
