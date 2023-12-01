@@ -19,7 +19,7 @@ from botbuilder.dialogs.prompts import (
 from botbuilder.dialogs.choices import Choice
 from botbuilder.core import MessageFactory, UserState
 
-from data_models import UserProfile
+from fast_bot.data_models.user_profile import UserProfile
 
 
 class UserProfileDialog(ComponentDialog):

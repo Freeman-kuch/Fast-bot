@@ -68,8 +68,8 @@ ADAPTER.on_turn_error = on_error
 
 # Create MemoryStorage, UserState and ConversationState
 MEMORY = MemoryStorage()
-CONVERSATION_STATE = ConversationState(
-    MEMORY)  # we can use redis for this, just cofigure this and pass it to teh dialogue
+CONVERSATION_STATE = ConversationState(MEMORY)  # we can use redis for this, just configure this and pass it to the
+# dialogue
 USER_STATE = UserState(MEMORY)
 
 # create main dialog and bot
@@ -90,7 +90,8 @@ async def messages(req: Request) -> Response:
     activity = Activity().deserialize(body)
     auth_header = req.headers["Authorization"] if "Authorization" in req.headers else ""
 
-    response = await ADAPTER.process_activity(auth_header, activity, BOT.on_turn)
+    response = await ADAPTER.process_activity(auth_header, activity, BOT.on_turn)  # this is where we forward
+    # the request to the adapter
     if response:
         return JSONResponse(data=response.body, status_code=response.status)
     return Response(status_code=status.HTTP_200_OK)
