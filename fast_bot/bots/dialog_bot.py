@@ -3,7 +3,7 @@
 
 from botbuilder.core import ActivityHandler, ConversationState, TurnContext, UserState
 from botbuilder.dialogs import Dialog
-from fast_bot.helpers.dialog_helper import DialogHelper
+from helpers.dialog_helper import DialogHelper
 
 
 class DialogBot(ActivityHandler):
