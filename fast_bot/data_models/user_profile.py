@@ -1,16 +1,12 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License.
 
-from botbuilder.schema import Attachment
 
-
-class UserProfile:
+class UserBankInformation:
     """
       This is our application state. Just a regular serializable Python class.
     """
-
-    def __init__(self, name: str = None, transport: str = None, age: int = 0, picture: Attachment = None):
+    def __init__(self, name: str = None, bank: str = None, account_number: int = 0):  # this would not get to be used for this MVP release
         self.name = name
-        self.transport = transport
-        self.age = age
-        self.picture = picture
+        self.bank = bank
+        self.account_number = account_number

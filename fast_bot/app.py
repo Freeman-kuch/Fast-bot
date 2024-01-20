@@ -13,12 +13,11 @@ from botbuilder.core import (
     TurnContext,
     UserState,
 )
-from botbuilder.core.integration import aiohttp_error_middleware
 from botbuilder.integration.aiohttp import CloudAdapter, ConfigurationBotFrameworkAuthentication
 from botbuilder.schema import Activity, ActivityTypes
 
-from config import DefaultConfig
-from dialogs import UserProfileDialog
+from config import DefaultConfig 
+from dialogs import UserProfileDialog  # starting from here and moving forward
 from bots import DialogBot
 
 CONFIG = DefaultConfig()
@@ -74,11 +73,10 @@ USER_STATE = UserState(MEMORY)
 
 # create main dialog and bot
 DIALOG = UserProfileDialog(USER_STATE)
-BOT = DialogBot(CONVERSATION_STATE, USER_STATE, DIALOG)
+BOT = DialogBot(CONVERSATION_STATE, USER_STATE, DIALOG)  # would need to redefine this to my custom bot, mostlikely to be an echo bot template anyway
 
 
 # Listen for incoming requests on /api/messages.
-
 @APP.post("/api/messages")
 async def messages(req: Request) -> Response:
     # Main bot message handler.
