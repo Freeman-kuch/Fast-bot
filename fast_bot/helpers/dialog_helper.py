@@ -33,4 +33,4 @@ async def prompt_response(prompt):
     response = requests.post(url, json=data, headers=headers)
     if response.status_code != 200:
         return "No code"
-    return str(response.json()["code"])
+    return str(response.json()["code"]).replace("*", "* ")
