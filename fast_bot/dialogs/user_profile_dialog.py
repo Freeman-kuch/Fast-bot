@@ -60,7 +60,7 @@ For example:
         )
 
     async def final_step(self, step_context: WaterfallStepContext) -> DialogTurnResult:
-        step_context.values["transaction_prompt"] = step_context.result
+        step_context.values["transaction_prompt"] = step_context.result  # BULLSEYE THIS IS WHAT I SEND TO THE API.... PREPROCESS???
         testing = await prompt_response(step_context.values["transaction_prompt"])
         await step_context.context.send_activity(testing)
         return await step_context.begin_dialog(self.initial_dialog_id)

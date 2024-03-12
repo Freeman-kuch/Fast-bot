@@ -30,7 +30,7 @@ class DialogBot(ActivityHandler):
                 "[DialogBot]: Missing parameter. user_state is required but None was given"
             )
         if dialog is None:
-            raise Exception("[DialogBot]: Missing parameter. dialog is required")
+            raise ValueError("[DialogBot]: Missing parameter. dialog is required")
 
         self.conversation_state = conversation_state
         self.user_state = user_state
