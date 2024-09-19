@@ -1,8 +1,0 @@
-{
-  "$kind": "Microsoft.MultiLanguageRecognizer",
-  "id": "ORCHESTRATOR_BasicAssistant",
-  "recognizers": {
-    "en-us": "BasicAssistant.en-us.lu",
-    "": "BasicAssistant.en-us.lu"
-  }
-}

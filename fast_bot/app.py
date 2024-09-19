@@ -1,6 +1,3 @@
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License.
-
 import sys
 import traceback
 from datetime import datetime
@@ -48,7 +45,7 @@ async def on_error(context: TurnContext, error: Exception):
         trace_activity = Activity(
             label="TurnError",
             name="on_turn_error Trace",
-            timestamp=datetime.utcnow(),
+            timestamp=datetime.now(),
             type=ActivityTypes.trace,
             value=f"{error}",
             value_type="https://www.botframework.com/schemas/error",
@@ -93,3 +90,6 @@ async def messages(req: Request) -> Response:
     if response:
         return JSONResponse(data=response.body, status_code=response.status)
     return Response(status_code=status.HTTP_200_OK)
+
+# to run
+# uvicorn app:APP --reload
